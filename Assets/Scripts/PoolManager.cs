@@ -35,7 +35,7 @@ public class PoolManager : MonoBehaviour
         for(int i=0;i<quantityToPool;i++){
 
             poolList.Add(Instantiate(prefabToPool,poolContainer.transform));
-            poolList[i].ableToPool=true;
+            poolList[i].gameObject.SetActive(false);
         }
     }
 }
