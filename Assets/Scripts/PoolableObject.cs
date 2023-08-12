@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PoolableObject : MonoBehaviour
 {
-    protected bool ableToPool;
+    public bool ableToPool;
     void Start()
     {
         
