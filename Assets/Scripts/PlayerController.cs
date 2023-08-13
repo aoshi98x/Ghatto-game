@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,19 +18,20 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
     [Header("Collectibles Zone")]
     [SerializeField] TextMeshProUGUI foodCount;
-    [SerializeField] int foodAmount;
+    [SerializeField] protected int foodAmount;
 
     [Space(10)]
     [Header("Attack")]
     [SerializeField] GameObject arm;
     [SerializeField] Animator catAnimator;
     [SerializeField] AttackControl attackControl;
+    float timeToZero;
 
     // Start is called before the first frame update
     void Start()
     {
         catRigid = GetComponent<Rigidbody>();
-        //foodCount = GameObject.Find("FoodCounter").GetComponent<TextMeshProUGUI>();
+        foodCount = GameObject.Find("FoodCounter").GetComponent<TextMeshProUGUI>();
         catAnimator = GetComponent<Animator>();
         
     }
@@ -37,28 +39,45 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && clickCounter < 2)
         {
             clickCounter++;
         }
+
+        else if (Input.GetMouseButtonDown(1) && onFloor)
+        {
+            clickCounter = 2;
+        }
+        
         switch (clickCounter)
         {
+            
+
             case 1:
                 if (Input.GetMouseButtonDown(0) && onFloor)
                 {
                     canJump = true;
                 }
                 break;
+
             case 2:
                 {
                     AttackMode(true);
-                    clickCounter = 0;
+                    timeToZero += Time.deltaTime;
+                    if(timeToZero > 0.5f)
+                    {
+                        clickCounter = 0;
+                        timeToZero = 0;
+                    }
+                    
                 }
 
                 break;
 
             default:
-                AttackMode(false);
+                {
+                    AttackMode(false);
+                }    
                 break;
         }
     }
@@ -74,13 +93,14 @@ public class PlayerController : MonoBehaviour
 
     void AttackMode(bool state)
     {
-        arm.gameObject.SetActive(state);
-        catAnimator.SetBool("Attacking", state);
+        arm.SetActive(state);
+        catAnimator.SetBool("AtkCuchillo", state);
         attackControl.enabled = state;
     }
     void Jump()
     {
         catRigid.AddForce(Vector3.up * speed, ForceMode.Impulse);
+        catAnimator.SetBool("Salto", true);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -88,6 +108,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             onFloor = true;
+            catAnimator.SetBool("Salto", false);
+            clickCounter = 0;
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -100,10 +122,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Food"))
+        if (other.gameObject.CompareTag("Food") && clickCounter < 2)
         {
             foodAmount++;
-            foodCount.text = "Food: " + foodAmount;
+            foodCount.text = Convert.ToString(foodAmount);
         }
     }
 }

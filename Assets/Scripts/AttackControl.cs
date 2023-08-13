@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class AttackControl : PlayerController
 {
-    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other != null)
+        if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Obstacle"))
         { 
             Destroy(other.gameObject);
         }
