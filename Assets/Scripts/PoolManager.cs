@@ -32,7 +32,7 @@ public class PoolManager : MonoBehaviour
         FillPoolContainer(floorPoolContainer,floorPrefabs,floorPrefabQuantity,floorList);
         FillPoolContainer(housePoolContainer,housePrefabs,housePrefabQuantity,houseList);
         FillPoolContainer(foodPoolContainer, foodPrefabs, foodPrefabQuantity, foodList);
-        FillPoolContainer(foodPoolContainer, foodPrefabs, foodPrefabQuantity, enemyList);
+        FillPoolContainer(enemyPoolContainer, enemyPrefabs, enemyPrefabQuantity, enemyList);
     }
 
     void FillPoolContainer(GameObject poolContainer,List<PoolableObject> prefabsList, int quantityPerPrefab, List<PoolableObject> poolList )

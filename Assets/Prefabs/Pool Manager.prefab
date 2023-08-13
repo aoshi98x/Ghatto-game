@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1207159649997042093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2020451015130718673}
+  m_Layer: 0
+  m_Name: Enemy Pool Container (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2020451015130718673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207159649997042093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5055040879292559887}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4797028745275112604
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +125,7 @@ Transform:
   - {fileID: 5055040879063526621}
   - {fileID: 5055040880769333176}
   - {fileID: 8887485733957165945}
+  - {fileID: 2020451015130718673}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -124,11 +156,12 @@ MonoBehaviour:
   - {fileID: -8299449552359264193, guid: ba663cc6d5a9a7d4a88f08624122e557, type: 3}
   - {fileID: -725114960906667240, guid: b85e5dce9dce70543a1814fcf585f155, type: 3}
   - {fileID: -3944284281349037055, guid: 8a26d4c824d42984c9563a4f8add4846, type: 3}
-  enemyPrefabs: []
+  enemyPrefabs:
+  - {fileID: 4414929508101905701, guid: 9b7cc4ee2f5a7354f803985bb7088bc2, type: 3}
   floorPrefabQuantity: 8
-  housePrefabQuantity: 3
+  housePrefabQuantity: 2
   foodPrefabQuantity: 5
-  enemyPrefabQuantity: 0
+  enemyPrefabQuantity: 5
   floorList: []
   houseList: []
   foodList: []

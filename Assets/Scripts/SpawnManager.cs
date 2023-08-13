@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
         //timeToSpawn = 10f;
     	SetFirstScenario();
         InvokeRepeating("SpawnFood",0,3);
-        //InvokeRepeating("SpawnEnemy",0,4);
+        InvokeRepeating("SpawnEnemy",0,4);
         
     }
 	void Update()
