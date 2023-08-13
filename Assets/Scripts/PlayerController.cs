@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AttackControl attackControl;
     float timeToZero;
 
+    [Space(10)]
+    [Header("Sounds")]
+    [SerializeField]protected AudioClip jumpSfx, atkSfx, foodSfx;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,9 +66,10 @@ public class PlayerController : MonoBehaviour
 
             case 2:
                 {
+                    
                     AttackMode(true);
                     timeToZero += Time.deltaTime;
-                    if(timeToZero > 0.5f)
+                    if(timeToZero > 0.35f)
                     {
                         clickCounter = 0;
                         timeToZero = 0;
@@ -99,6 +104,7 @@ public class PlayerController : MonoBehaviour
     }
     void Jump()
     {
+        
         catRigid.AddForce(Vector3.up * speed, ForceMode.Impulse);
         catAnimator.SetBool("Salto", true);
     }
@@ -125,7 +131,16 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Food") && clickCounter < 2)
         {
             foodAmount++;
+            AudioController.Instance.PlaySound(foodSfx);
             foodCount.text = Convert.ToString(foodAmount);
         }
+    }
+    void AtkSfx()
+    {
+        AudioController.Instance.PlaySound(atkSfx);
+    }
+    void JumpSfx()
+    {
+        AudioController.Instance.PlaySound(jumpSfx);
     }
 }
