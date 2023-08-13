@@ -5,35 +5,29 @@ using UnityEngine;
 
 public class CharacterSelection : MonoBehaviour
 {
-    public GameObject[] characters;
-    public GameObject character;
-       
+    [SerializeField] GameObject character;
+    SkinnedMeshRenderer catSkin;
+    [SerializeField] List<Material> nekoMaterial;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        foreach(GameObject character in characters)
-        {
-            character.SetActive(false);
-        }
+        catSkin = character.transform.GetChild(2).GetComponent<SkinnedMeshRenderer>();
     }
 
-        public void SelectCharacter (int characterIndex)//selección personajes
+    public void SelectCharacter(int characterIndex)//selección personajes
     {
-        for(int i = 0; i < characters.Length;i++)
+        switch (characterIndex)
         {
-            if (i == characterIndex)
-            {
-                characters[i].SetActive(true);
-            } else
-            {
-                characters[i].SetActive(false);
-            }
-        }
-        SceneManager.LoadScene("MainScene");
-        Debug.Log("ya entra a otra scena");
+            case 0:
+                catSkin.material = nekoMaterial[0];
+                break;
 
-    } 
+            case 1: 
+                catSkin.material = nekoMaterial[1];  
+                break;
+        }
+
+    }  
     public void ChangeScene(string nameScene)
     {
         SceneManager.LoadScene(nameScene);
