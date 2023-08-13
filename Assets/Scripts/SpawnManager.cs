@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
     {
         AssignWallDespawner(mainWallDespawner,poolManager.floorList);
         AssignWallDespawner(mainWallDespawner,poolManager.houseList);
-        InvokeRepeating("SpawnScenaryTile",3f,5f);
+        InvokeRepeating("SpawnScenaryTile",0f,6f);
     }
 
     // Update is called once per frame
