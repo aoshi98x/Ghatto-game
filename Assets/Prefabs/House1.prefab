@@ -759,6 +759,7 @@ GameObject:
   - component: {fileID: 6716273115641798204}
   - component: {fileID: 5157623760062507284}
   - component: {fileID: 4403198059889672431}
+  - component: {fileID: 895742349}
   m_Layer: 0
   m_Name: House1
   m_TagString: House
@@ -830,3 +831,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
+--- !u!65 &895742349
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8102102397414709101}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 6, z: 15}
+  m_Center: {x: 0, y: 3, z: 3}
