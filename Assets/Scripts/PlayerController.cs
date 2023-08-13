@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
     [Header("Collectibles Zone")]
     [SerializeField] TextMeshProUGUI foodCount;
-    [SerializeField] int foodAmount;
+    [SerializeField] protected int foodAmount;
 
     [Space(10)]
     [Header("Attack")]
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         catRigid = GetComponent<Rigidbody>();
-        //foodCount = GameObject.Find("FoodCounter").GetComponent<TextMeshProUGUI>();
+        foodCount = GameObject.Find("FoodCounter").GetComponent<TextMeshProUGUI>();
         catAnimator = GetComponent<Animator>();
         
     }
@@ -121,10 +122,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Food"))
+        if (other.gameObject.CompareTag("Food") && clickCounter < 2)
         {
             foodAmount++;
-            foodCount.text = "Food: " + foodAmount;
+            foodCount.text = Convert.ToString(foodAmount);
         }
     }
 }

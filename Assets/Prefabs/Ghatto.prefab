@@ -267,7 +267,6 @@ GameObject:
   - component: {fileID: 2625832678895958531}
   - component: {fileID: 2625832678895958530}
   - component: {fileID: 2625832678895959549}
-  - component: {fileID: 2625832678895958528}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
@@ -353,18 +352,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2625832678895958528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2625832678895959551}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23bd66b6145acef4591c249ac4425883, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2662226968924346070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1133,7 @@ MonoBehaviour:
   foodAmount: 0
   arm: {fileID: 2625832678895959551}
   catAnimator: {fileID: 0}
-  attackControl: {fileID: 2625832678895958528}
+  attackControl: {fileID: 0}
 --- !u!1 &7012880467007772745
 GameObject:
   m_ObjectHideFlags: 0
