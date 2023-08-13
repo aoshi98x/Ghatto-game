@@ -22,15 +22,16 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
     [Header("Attack")]
     [SerializeField] GameObject arm;
-    Animator catAnimator;
+    [SerializeField] Animator catAnimator;
     [SerializeField] AttackControl attackControl;
 
     // Start is called before the first frame update
     void Start()
     {
         catRigid = GetComponent<Rigidbody>();
-        foodCount = GameObject.Find("FoodCounter").GetComponent<TextMeshProUGUI>();
+        //foodCount = GameObject.Find("FoodCounter").GetComponent<TextMeshProUGUI>();
         catAnimator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
