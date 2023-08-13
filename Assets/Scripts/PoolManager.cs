@@ -7,11 +7,11 @@ public class PoolManager : MonoBehaviour
     public GameObject floorPoolContainer;
     public GameObject housePoolContainer;
 
-    public PoolableObject floorPrefab;
-    public PoolableObject housePrefab;
+    public List<PoolableObject> floorPrefabs;
+    public List<PoolableObject> housePrefabs;
 
-    public int floorListQuantity;
-    public int houseListQuantity;
+    public int floorPrefabQuantity;
+    public int housePrefabQuantity;
 
     public List<PoolableObject> floorList;
     public List<PoolableObject> houseList;
@@ -21,8 +21,8 @@ public class PoolManager : MonoBehaviour
 
     void Awake()
     {
-        FillPoolContainer(floorPoolContainer,floorPrefab,floorListQuantity,floorList);        
-        FillPoolContainer(housePoolContainer,housePrefab,houseListQuantity,houseList);        
+        FillPoolContainer(floorPoolContainer,floorPrefabs,floorPrefabQuantity,floorList);
+        FillPoolContainer(housePoolContainer,housePrefabs,housePrefabQuantity,houseList);
     }
 
     // Update is called once per frame
@@ -30,12 +30,15 @@ public class PoolManager : MonoBehaviour
     {
         
     }
-    void FillPoolContainer(GameObject poolContainer,PoolableObject prefabToPool, int quantityToPool, List<PoolableObject> poolList )
+    void FillPoolContainer(GameObject poolContainer,List<PoolableObject> prefabsList, int quantityPerPrefab, List<PoolableObject> poolList )
     {
-        for(int i=0;i<quantityToPool;i++){
 
-            poolList.Add(Instantiate(prefabToPool,poolContainer.transform));
-            poolList[i].ableToPool=true;
+        foreach(PoolableObject objectToPool in prefabsList){
+            for(int i=0; i<quantityPerPrefab;i++)
+            {
+                poolList.Add(Instantiate(objectToPool,poolContainer.transform));
+                poolList[poolList.Count-1].gameObject.SetActive(false);
+            }
         }
     }
 }
