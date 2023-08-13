@@ -61,3 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fbd910e210b4dd4aa5ad535d23f8ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tenHp: {fileID: 21300000, guid: 16fd3dd3e66dc5b499c82ab01aaa6310, type: 3}
+  quarterHp: {fileID: 21300000, guid: b13e6b334f4565c4ea766ddea78a9d34, type: 3}
+  halfHp: {fileID: 21300000, guid: 26153aef308e0f74b94b49ea12e50eea, type: 3}
+  thirdQuarterHp: {fileID: 21300000, guid: 75ab509b0c8d676448a9597c66a3a0c9, type: 3}
+  fullHp: {fileID: 21300000, guid: 78fd3629db8cc9748b2a3dc98eaa8114, type: 3}

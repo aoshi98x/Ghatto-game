@@ -131,6 +131,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Food") && clickCounter < 2)
         {
             foodAmount++;
+            GameManager.Instance.life += 5;
             AudioController.Instance.PlaySound(foodSfx);
             foodCount.text = Convert.ToString(foodAmount);
         }
