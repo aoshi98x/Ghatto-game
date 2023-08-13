@@ -9,10 +9,6 @@ public class SpawnableObject : MonoBehaviour
     private Vector3 voidSpawnPosition=new Vector3(50,0,50);
     public GameObject wallDespawner;
     
-    void Awake() 
-    {
-           
-    }
 
     public void SpawnObject(Vector3 positionToSpawn)
     {

@@ -16,8 +16,9 @@ public class AttackControl : PlayerController
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Obstacle"))
-        { 
-            Destroy(other.gameObject);
+        {
+            //Destroy(other.gameObject);
+            other.gameObject.GetComponent<SpawnableObject>().DespawnObject();
         }
     }
 }
