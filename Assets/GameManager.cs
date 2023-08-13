@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float life;
     [SerializeField] Image healthCount; 
     [SerializeField] Sprite tenHp, quarterHp, halfHp, thirdQuarterHp, fullHp;
+    [SerializeField] GameObject gameOverUI, humanSprite;
 
     private void Awake()
     {
@@ -31,10 +32,18 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         selectionScript = GetComponent<CharacterSelection>();
+        Time.timeScale = 1f;
 
     }
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "MenuScene")
+        {
+            selectionScript.enabled = true;
+            life = 75f;
+            noDependencies = false;
+            Time.timeScale = 1f;
+        }
         if (SceneManager.GetActiveScene().name == "MainScene" && !noDependencies)
         {
             life = 75f;
@@ -42,7 +51,7 @@ public class GameManager : MonoBehaviour
             noDependencies = true; 
         }
 
-            if (SceneManager.GetActiveScene().name == "MainScene")
+            if (SceneManager.GetActiveScene().name == "MainScene" && noDependencies)
         {
             
             life -= Time.deltaTime;
@@ -51,10 +60,18 @@ public class GameManager : MonoBehaviour
             if (life <= 0)
             {
                 healthCount.sprite = null;
+                humanSprite.transform.GetChild(2).gameObject.SetActive(false);
+                humanSprite.transform.GetChild(1).gameObject.SetActive(false);
+                humanSprite.transform.GetChild(0).gameObject.SetActive(true);
+                gameOverUI.SetActive(true);
+                Time.timeScale = 0f;
             }
 
             else if(life<=100 && life > 75)
             {
+                humanSprite.transform.GetChild(2).gameObject.SetActive(true);
+                humanSprite.transform.GetChild(1).gameObject.SetActive(false);
+                humanSprite.transform.GetChild(0).gameObject.SetActive(false);
                 healthCount.sprite = fullHp;
             }
 
@@ -65,6 +82,9 @@ public class GameManager : MonoBehaviour
 
             else if (life <= 50 && life >= 26)
             {
+                humanSprite.transform.GetChild(2).gameObject.SetActive(false);
+                humanSprite.transform.GetChild(1).gameObject.SetActive(true);
+                humanSprite.transform.GetChild(0).gameObject.SetActive(false);
                 healthCount.sprite = halfHp;
             }
 
@@ -75,6 +95,9 @@ public class GameManager : MonoBehaviour
 
             else if (life <= 10 && life >= 1)
             {
+                humanSprite.transform.GetChild(2).gameObject.SetActive(false);
+                humanSprite.transform.GetChild(1).gameObject.SetActive(false);
+                humanSprite.transform.GetChild(0).gameObject.SetActive(true);
                 healthCount.sprite = tenHp;
             }
         }
@@ -82,7 +105,11 @@ public class GameManager : MonoBehaviour
     }
     void CallDependencies()
     {
+        gameOverUI = GameObject.Find("GameOver");
+        gameOverUI.SetActive(false);
+        humanSprite = GameObject.Find("Humano");
         healthCount = GameObject.Find("Health").GetComponent<Image>();
     }
    
+
 }
