@@ -9,6 +9,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject mainWallDespawner;
     public GameObject floorSpawner;
     public GameObject houseSpawner;
+    public GameObject foodSpawner;
+    public GameObject enemySpawner;
     private GameObject lastHouseSpawned;
 
     private float timeRunning=0;
@@ -18,8 +20,13 @@ public class SpawnManager : MonoBehaviour
     {
         AssignWallDespawner(mainWallDespawner,poolManager.floorList);
         AssignWallDespawner(mainWallDespawner,poolManager.houseList);
+        AssignWallDespawner(mainWallDespawner,poolManager.foodList);
+        AssignWallDespawner(mainWallDespawner,poolManager.enemyList);
         //timeToSpawn = 10f;
     	SetFirstScenario();
+        InvokeRepeating("SpawnFood",0,3);
+        //InvokeRepeating("SpawnEnemy",0,4);
+        
     }
 	void Update()
 	{
@@ -40,20 +47,28 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-	IEnumerator SpawnScenaryTile()
-    {
-        SpawnItemOnSpawner(floorSpawner,poolManager.floorList);
-        SpawnItemOnSpawner(houseSpawner,poolManager.houseList);
-
-        yield return null;
-    }
     void SpawnScenaryTileFunc()
     {
         SpawnItemOnSpawner(floorSpawner,poolManager.floorList);
         lastHouseSpawned= SpawnItemOnSpawner(houseSpawner,poolManager.houseList).gameObject;
     }
 
-    void SetFirstScenario()
+    void SpawnFood()
+    {
+	    PoolableObject foodSpawned=	SpawnItemOnSpawner(foodSpawner, poolManager.foodList);
+        if (Random.Range(0, 2) < 1 && foodSpawned!=null)
+        {
+            foodSpawned.transform.position = new Vector3(foodSpawned.transform.position.x, foodSpawned.transform.position.y + 2, foodSpawned.transform.position.z);
+        }
+
+	}
+    void SpawnEnemy()
+    {
+	    PoolableObject enemySpawned=SpawnItemOnSpawner(enemySpawner, poolManager.enemyList);
+
+	}
+
+	void SetFirstScenario()
     {
         PoolableObject spawnedHouse=null;
         PoolableObject spawnedStreet = null;
