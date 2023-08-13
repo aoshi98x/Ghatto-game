@@ -12,26 +12,53 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
 
     [SerializeField] bool onFloor, canJump;
+    [SerializeField] int clickCounter;
 
     [Space(10)]
     [Header("Collectibles Zone")]
     [SerializeField] TextMeshProUGUI foodCount;
     [SerializeField] int foodAmount;
 
+    [Space(10)]
+    [Header("Attack")]
+    [SerializeField] GameObject arm;
+    Animator catAnimator;
+    [SerializeField] AttackControl attackControl;
 
     // Start is called before the first frame update
     void Start()
     {
         catRigid = GetComponent<Rigidbody>();
         foodCount = GameObject.Find("FoodCounter").GetComponent<TextMeshProUGUI>();
+        catAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && onFloor) 
+        if (Input.GetMouseButtonDown(0))
         {
-            canJump = true;
+            clickCounter++;
+        }
+        switch (clickCounter)
+        {
+            case 1:
+                if (Input.GetMouseButtonDown(0) && onFloor)
+                {
+                    canJump = true;
+                }
+                break;
+            case 2:
+                {
+                    AttackMode(true);
+                    clickCounter = 0;
+                }
+
+                break;
+
+            default:
+                AttackMode(false);
+                break;
         }
     }
 
@@ -42,6 +69,13 @@ public class PlayerController : MonoBehaviour
             Jump();
             canJump = false;
         }
+    }
+
+    void AttackMode(bool state)
+    {
+        arm.gameObject.SetActive(state);
+        catAnimator.SetBool("Attacking", state);
+        attackControl.enabled = state;
     }
     void Jump()
     {
