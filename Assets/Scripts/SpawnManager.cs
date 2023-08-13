@@ -12,13 +12,13 @@ public class SpawnManager : MonoBehaviour
     private GameObject lastHouseSpawned;
 
     private float timeRunning=0;
-    private float timeToSpawn;
+    [SerializeField]private float timeToSpawn;
     // Start is called before the first frame update
     void Start()
     {
         AssignWallDespawner(mainWallDespawner,poolManager.floorList);
         AssignWallDespawner(mainWallDespawner,poolManager.houseList);
-        timeToSpawn = 10f;
+        //timeToSpawn = 10f;
     	SetFirstScenario();
     }
 	void Update()

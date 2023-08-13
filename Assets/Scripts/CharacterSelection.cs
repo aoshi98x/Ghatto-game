@@ -34,4 +34,8 @@ public class CharacterSelection : MonoBehaviour
         Debug.Log("ya entra a otra scena");
 
     } 
+    public void ChangeScene(string nameScene)
+    {
+        SceneManager.LoadScene(nameScene);
+    }
 }

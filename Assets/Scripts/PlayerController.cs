@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         catRigid = GetComponent<Rigidbody>();
-        foodCount = GameObject.Find("FoodCounter").GetComponent<TextMeshProUGUI>();
-        catAnimator = GetComponent<Animator>();
+        /*foodCount = GameObject.Find("FoodCounter").GetComponent<TextMeshProUGUI>();
+        catAnimator = GetComponent<Animator>();*/
         
     }
 
