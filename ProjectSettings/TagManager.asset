@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - House
+  - Food
   layers:
   - Default
   - TransparentFX
