@@ -2075,6 +2075,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5157623760062507284, guid: e6b1ea80e6851ca479f7251adde91829, type: 3}
     - target: {fileID: 5055040879292559886, guid: 5c3ff2e186e39864cac3d7615786ec7b, type: 3}
+      propertyPath: enemyPoolContainer
+      value: 
+      objectReference: {fileID: 5055040880615063948}
+    - target: {fileID: 5055040879292559886, guid: 5c3ff2e186e39864cac3d7615786ec7b, type: 3}
       propertyPath: enemyPrefabQuantity
       value: 5
       objectReference: {fileID: 0}
@@ -2160,6 +2164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c3ff2e186e39864cac3d7615786ec7b, type: 3}
+--- !u!1 &5055040880615063948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1207159649997042093, guid: 5c3ff2e186e39864cac3d7615786ec7b, type: 3}
+  m_PrefabInstance: {fileID: 5055040880615063947}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5693365692543648278
 PrefabInstance:
   m_ObjectHideFlags: 0
